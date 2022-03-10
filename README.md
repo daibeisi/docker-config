@@ -22,3 +22,6 @@
     Redis
 
     Nginx
+
+    Posegresql
+        docker-compose up -d
