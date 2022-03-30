@@ -20,10 +20,12 @@
     └── README.md                // 项目文档
 ## 启动
     MySQL
-
+        docker-compose -f mysql.yml up -d
     Redis
-
+        docker-compose -f redis.yml up -d
     Nginx
-
+        docker-compose -f nginx.yml up -d
     Posegresql
+        docker-compose up -d
+    Ubuntu
         docker-compose up -d
