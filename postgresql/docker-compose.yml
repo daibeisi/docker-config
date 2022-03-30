@@ -1,18 +1,16 @@
 version: '3'
 services:
   postgres:
-    hostname: postgres
     image: postgres
+    hostname: postgres
     privileged: true # 权限要加，不然启动会告错
     # network_mode: "host" # 如果需要容器使用宿主机IP(内网IP)，则可以配置此项
     container_name: postgres # 指定容器名称，如果不设置此参数，则由系统自动生成
     restart: always # 设置容器自启模式
     environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: root
-      TZ: Asia/Shanghai
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     volumes:
-       - ./pg-data:/var/lib/postgresql/data
+       - ./data/db:/var/lib/postgresql/data
     ports:
         - "5432:5432"
