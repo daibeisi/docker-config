@@ -9,7 +9,7 @@ services:
     restart: always # 设置容器自启模式
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_PASSWORD=e0BzbP90jwoSF!a9
     volumes:
        - ./data/db:/var/lib/postgresql/data
     ports:
