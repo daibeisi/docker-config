@@ -1,0 +1,27 @@
+version: '3'
+services:
+  fdfs_tracker:
+    image: delron/fastdfs
+    container_name: fdfs_tracker
+    restart: always
+    ports:
+      - "22122:22122"
+    command:
+      - tracker
+    volumes:
+      - ./tracker:/var/fdfs
+  fdfs_storage:
+    image: delron/fastdfs
+    container_name: fdfs_storage
+    restart: always
+    ports:
+      - "8888:8888"
+      - "23000:23000"
+    command:
+      - storage
+    volumes:
+      - ./storage:/var/fdfs
+    environment:
+      - TRACKER_SERVER=192.168.0.46:22122
+      - GROUP_NAME=group1
+
