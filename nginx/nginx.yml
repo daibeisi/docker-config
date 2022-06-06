@@ -3,7 +3,8 @@ services:
   nginx:
     image: nginx:latest
     container_name: nginx
-    restart: always
+    privileged: true
+#    restart: always
     ports:
       - "80:80"
       - "443:443"
@@ -15,4 +16,3 @@ services:
       - ./conf/cert:/etc/nginx/cert
     environment:
      - TZ=Asia/Shanghai # 设置容器时区与宿主机保持一致
-    privileged: true

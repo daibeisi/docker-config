@@ -1,13 +1,7 @@
 version: '3'
 services:
   ubuntu:
-    image: ubuntu
-    container_name: daibeisi
-    hostname: daibeisi
+    build: .
     restart: always
-    tty: true
-    environment:
-      - TZ=Asia/Shanghai # 设置容器时区与宿主机保持一致
     ports:
       - "20022:22"
-      - "28086:8086"
