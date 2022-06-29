@@ -21,16 +21,8 @@ COPY . /docker/
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
     ln -s /docker/sources.list /etc/apt/ && \
     apt-get update -y && \
-    apt-get install wget -y && \
-#    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
-#    bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda && \
-#    sed -i '$a export PATH=/root/miniconda/bin:$PATH' ~/.bashrc && \
-    ~/.bashrc
-#    conda init && \
-#    conda config --set auto_activate_base false && \
-#    conda activate base && \
-#    python -m pip install --upgrade pip -i https://mirrors.aliyun.com/pypi/simple/ && \
-#    pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ \
+    python -m pip install --upgrade pip -i https://mirrors.aliyun.com/pypi/simple/ && \
+    pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
 
 # 设置默认执行的命令，docker run 时运行
-CMD conda activate base
+#CMD conda activate base
