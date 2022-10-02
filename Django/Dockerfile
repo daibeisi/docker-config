@@ -4,6 +4,6 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 WORKDIR /Django
 COPY requirements.txt /Django/
-RUN python -m pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN python -m pip install --upgrade pip && \
+    pip install -r requirements.txt
 COPY . /Django/
