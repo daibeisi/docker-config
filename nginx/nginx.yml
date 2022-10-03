@@ -10,9 +10,9 @@ services:
     environment:
       - TZ=Asia/Shanghai # 设置容器时区与宿主机保持一致
     volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./conf.d:/etc/nginx/conf.d
       - ~/nginx/html:/usr/share/nginx/html
       - ~/nginx/static:/usr/share/nginx/static
-      - ~/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ~/nginx/conf.d:/etc/nginx/conf.d
       - ~/nginx/cert:/etc/nginx/cert
       - ~/nginx/log:/var/log/nginx
