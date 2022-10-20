@@ -1,0 +1,10 @@
+version: '3'
+services:
+  odoo:
+    build: .
+    container_name: odoo16
+    restart: always
+    ports:
+      - "10022:22"
+      - "18069:8069"
+    tty: true
