@@ -2,13 +2,12 @@ version: '3'
 services:
   fastdfs:
     image: sjqzhang/go-fastdfs
-    container_name: fastdfs
+    container_name: go-fastdfs
     restart: always
     ports:
         - "8080:8080"
-    command:
-        - tracker
     volumes:
-        - ./fastdfs_data:/data
+      - ./conf/cfg.json:/data/conf/cfg.json
+      - ./fastdfs_data:/data
     environment:
       - GO_FASTDFS_DIR=/data
