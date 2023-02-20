@@ -1,18 +1,20 @@
 version: '3'
 services:
   mysql:
-    hostname: mysql
-    image: mysql:5.7.26
+    image: mysql
+    restart: always # 设置容器自启模式
     # network_mode: "host" # 如果需要容器使用宿主机IP(内网IP)，则可以配置此项
     container_name: mysql # 指定容器名称，如果不设置此参数，则由系统自动生成
-    restart: always # 设置容器自启模式
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci # 设置utf8字符集
-    environment:
-      - TZ=Asia/Shanghai # 设置容器时区与宿主机保持一致
-      - MYSQL_ROOT_PASSWORD=@Aliyun.com # 设置root密码
+    hostname: mysql
     volumes:
-       - /etc/localtime:/etc/localtime:ro # 设置容器时区与宿主机保持一致
-       - /home/workspace/docker/mysql/data:/var/lib/mysql/data # 映射数据库保存目录到宿主机，防止数据丢失
-       - /home/workspace/docker/mysql/my.cnf:/etc/mysql/my.cnf # 映射数据库配置文件
+       - ./data:/var/lib/mysql # 映射数据库保存目录到宿主机，防止数据丢失
+       - ./my.cnf:/etc/mysql/my.cnf # 映射数据库配置文件
+       - ./init:/docker-entrypoint-initdb.d/  # 放 mysql的初始化脚本，如果data目录中有文件，则再会执行初始化
     ports:
-        - "3306:3306"
+      - "3306:3306"  # 宿主机端口号：容器内端口号
+    environment:
+      - TZ=Asia/Shanghai  # 设置容器时区与宿主机保持一致
+      - MYSQL_ROOT_PASSWORD=******  # 设置root密码
+      - MYSQL_USER=daibeisi  # 创建普通用户
+      - MYSQL_PASSWORD=daibeisi  # 普通用户密码
+      - MYSQL_DATABASE=django  # 创建一个库

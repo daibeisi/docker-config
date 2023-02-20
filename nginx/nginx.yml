@@ -16,3 +16,7 @@ services:
       - ~/nginx/static:/usr/share/nginx/static
       - ~/nginx/cert:/etc/nginx/cert
       - ~/nginx/log:/var/log/nginx
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1g"
