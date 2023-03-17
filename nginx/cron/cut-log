@@ -1,0 +1,16 @@
+#!/bin/bash
+
+logdir="/var/log/nginx/"
+pid=$(cat $logdir/nginx.pid)
+DATE=$(date -d "1 hours ago" + %Y%m%d%H)
+DATE_OLD=$(date -d "7 days ago" + %Y%m%d)
+for i in `ls $logdir/*access.log`; do
+        mv $i $i.$DATE
+done
+for i in `ls $logdir/*error.log`; do
+        mv $i $i.$DATE
+done
+kill -s USR1 $pid
+rm -v $logdir"/access.log."$DATE_OLD*
+
+rm -v $logdir"/error.log."$DATE_OLD*
