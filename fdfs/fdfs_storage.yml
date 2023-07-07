@@ -1,0 +1,14 @@
+version: '3'
+services:
+  fdfs_storage:
+    image: delron/fastdfs
+    container_name: fdfs_storage
+    restart: always
+    command:
+      - storage
+    volumes:
+      - ./storage:/var/fdfs
+    network_mode: "host"
+    environment:
+      - TRACKER_SERVER=192.168.2.121:22122
+      - GROUP_NAME=group1
