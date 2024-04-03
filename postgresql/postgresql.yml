@@ -1,8 +1,9 @@
 version: '3.1'
 services:
   postgres:
-    image: postgres:14
-    restart: always # 设置容器自启模式
+    image: postgres:15
+    container_name: postgresql
+    restart: always
     environment:
       - TZ=Asia/Shanghai
       - POSTGRES_DB=postgres

@@ -1,15 +1,15 @@
 version: '3'
 services:
    RabbitMQ:
-    image: rabbitmq:management
+    image: rabbitmq:3-management
     container_name: rabbitmq
     hostname: rabbitmq
     restart: always
     environment:
+       - TZ=Asia/Shanghai
        - RABBITMQ_DEFAULT_USER=root
        - RABBITMQ_DEFAULT_PASS=e0BzbP90jwoSF!a9
        - RABBITMQ_DEFAULT_VHOST=default_vhost
-       - TZ=Asia/Shanghai
     ports:
        - "5672:5672"
        - "15672:15672"
