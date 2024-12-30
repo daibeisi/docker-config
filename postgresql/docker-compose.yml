@@ -2,15 +2,14 @@ version: '3.1'
 services:
   postgres:
     image: postgres:15
-    container_name: postgresql
-    restart: always
+    container_name: postgres
+    restart: unless-stopped
     environment:
       - TZ=Asia/Shanghai
       - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=e0BzbP90jwoSF!a9
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
     volumes:
        - ./data/:/var/lib/postgresql/data
-       - ./mnt/:/mnt/
     ports:
         - "5432:5432"
