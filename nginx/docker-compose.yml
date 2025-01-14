@@ -3,19 +3,18 @@ services:
   nginx:
     image: nginx
     container_name: nginx
-    restart: always
+    restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
     environment:
-      - TZ=Asia/Shanghai # 设置容器时区与宿主机保持一致
+      - TZ=Asia/Shanghai
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./conf.d:/etc/nginx/conf.d
-      - ~/nginx/html:/usr/share/nginx/html
-      - ~/nginx/static:/usr/share/nginx/static
-      - ~/nginx/cert:/etc/nginx/cert
-      - ~/nginx/log:/var/log/nginx
+      - ./html:/usr/share/nginx/html
+      - ./cert:/etc/nginx/cert
+      - ./log:/var/log/nginx
     logging:
       driver: "json-file"
       options:

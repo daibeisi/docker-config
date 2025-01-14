@@ -1,0 +1,16 @@
+version: '3'
+services:
+  grafana:
+    image: grafana
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./grafana.ini:/etc/grafana/grafana.ini
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1g"
